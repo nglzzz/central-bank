@@ -32,9 +32,22 @@ services:
         networks:
             - centralbank
 
+    redis:
+        image: redis:7.2.1-alpine3.18
+        container_name: centralbank-redis
+        ports:
+            - ${DOCKER_REDIS_PORT:-6379}:6379
+        volumes:
+            - redis:/data
+        command: redis-server --appendonly yes
+        networks:
+            - centralbank
+
 networks:
     centralbank:
         driver: bridge
 
 volumes:
     dbdata:
+    redis:
+        driver: local

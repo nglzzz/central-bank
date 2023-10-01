@@ -17,3 +17,13 @@ framework:
         # Namespaced pools use the above "app" backend by default
         #pools:
             #my.dedicated.cache: null
+
+        prefix_seed: '%env(CACHE_PREFIX_SEED)%'
+        app: cache.redis
+        system: cache.redis
+        pools:
+            cache.redis:
+                adapter: cache.adapter.redis
+                provider: '%env(CACHE_PROVIDER)%'
+                default_lifetime: '%cache.default_lifetime%'
+                tags: true

@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Handler\Currency;
 
-use App\Client\CurrencyClientInterface;
 use App\Dto\Currency\CurrencyRate;
 use App\Dto\Currency\DateRate;
+use App\Service\CurrencyRateService;
 
 final class RateHandler
 {
     private const DEFAULT_BASE_CURRENCY = 'RUR';
 
     public function __construct(
-        private readonly CurrencyClientInterface $currencyClient
+        private readonly CurrencyRateService $currencyRateService,
     ) {
     }
 
@@ -61,7 +61,7 @@ final class RateHandler
 
     private function getRateByDate(\DateTimeInterface $date, string $currency): ?CurrencyRate
     {
-        $collectionByDate = $this->currencyClient->getRatesByDate($date);
+        $collectionByDate = $this->currencyRateService->getByDate($date);
 
         if (empty($collectionByDate->rates)) {
             return null;
