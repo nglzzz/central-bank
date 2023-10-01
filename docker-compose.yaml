@@ -21,7 +21,7 @@ services:
 
     nginx:
         image: nginx:alpine
-        container_name: central-bank-nginx
+        container_name: centralbank-nginx
         ports:
             - ${DOCKER_WEB_PORT:-8000}:80
         volumes:
