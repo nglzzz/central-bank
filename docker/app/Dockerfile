@@ -18,10 +18,12 @@ RUN apt-get update && apt-get install -y \
     libz-dev libbz2-dev \
     librabbitmq-dev \
     && pecl install amqp \
+    && pecl install redis \
     && pecl install xdebug-3.2.2 \
     && docker-php-ext-install pdo_mysql mysqli mbstring exif pcntl bcmath gd zip intl simplexml bz2 \
     && docker-php-ext-configure gd \
-    && docker-php-ext-enable amqp
+    && docker-php-ext-enable amqp \
+    && docker-php-ext-enable redis
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 

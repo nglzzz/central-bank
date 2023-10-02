@@ -1,7 +1,7 @@
 framework:
     messenger:
         transports:
-            amqp: "%env(MESSENGER_TRANSPORT_DSN)%"
+            redis: '%env(CACHE_PROVIDER)%'
 
         routing:
-            App\Message\FetchCurrencyMessage: amqp
+            App\Message\FetchCurrencyMessage: redis

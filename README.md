@@ -7,7 +7,6 @@ Technology stack:
 - PHP 8.2
 - nginx
 - Redis
-- RabbitMQ
 - Docker
 - Symfony Framework
 

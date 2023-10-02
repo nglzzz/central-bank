@@ -43,20 +43,6 @@ services:
         networks:
             - centralbank
 
-    rabbitmq:
-        image: 'rabbitmq:3.9.29-management-alpine'
-        container_name: centralbank-rabbitmq
-        ports:
-            - '${DOCKER_AMQP_PORT:-5672}:5672'
-            - '${DOCKER_RABBITMQ_MC_PORT:-15672}:15672'
-        environment:
-            RABBITMQ_DEFAULT_USER: ${DOCKER_RABITMQ_USER:-rabbit}
-            RABBITMQ_DEFAULT_PASS: ${DOCKER_RABITMQ_PASSWORD:-rabbit}
-        volumes:
-            - rabbitmq:/var/lib/rabbitmq:cached
-        networks:
-            - centralbank
-
     app-consumer:
         build:
             args:
