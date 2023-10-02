@@ -10,6 +10,7 @@
         "jms/serializer": "^3.28",
         "phpdocumentor/reflection-docblock": "^5.3",
         "predis/predis": "^2.2",
+        "symfony/amqp-messenger": "6.3.*",
         "symfony/console": "6.3.*",
         "symfony/dotenv": "6.3.*",
         "symfony/flex": "^2",

@@ -11,3 +11,5 @@
 ###> phpstan/phpstan ###
 phpstan.neon
 ###< phpstan/phpstan ###
+
+docker-compose.override.yaml

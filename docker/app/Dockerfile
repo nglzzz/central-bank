@@ -14,12 +14,14 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     libgd-dev \
-    imagemagick libmagickwand-dev --no-install-recommends \
     libpq-dev \
-    libz-dev libmemcached-dev \
+    libz-dev libbz2-dev \
+    librabbitmq-dev \
+    && pecl install amqp \
     && pecl install xdebug-3.2.2 \
     && docker-php-ext-install pdo_mysql mysqli mbstring exif pcntl bcmath gd zip intl simplexml bz2 \
-    && docker-php-ext-configure gd
+    && docker-php-ext-configure gd \
+    && docker-php-ext-enable amqp
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
